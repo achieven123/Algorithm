@@ -37,6 +37,7 @@ public class Boj2630 {
 
     public static void cuttingPaper(int length, int x1, int y1, int x2, int y2) {
         int count = 0;
+        int zero = 0;
 
         for (int y = y1; y < y2; y++) {
             for (int x = x1; x < x2; x++) {
@@ -45,9 +46,9 @@ public class Boj2630 {
         }
 
         if (count != length * length && count != 0) {
-            cuttingPaper(length / 2, x1 + 0         , y1 + 0         , x1 + length / 2, y1 + length / 2);
-            cuttingPaper(length / 2, x1 + length / 2, y1 + 0         , x1 + length    , y1 + length / 2);
-            cuttingPaper(length / 2, x1 + 0         , y1 + length / 2, x1 + length / 2, y1 + length    );
+            cuttingPaper(length / 2, x1 + zero      , y1 + zero      , x1 + length / 2, y1 + length / 2);
+            cuttingPaper(length / 2, x1 + length / 2, y1 + zero      , x1 + length    , y1 + length / 2);
+            cuttingPaper(length / 2, x1 + zero      , y1 + length / 2, x1 + length / 2, y1 + length    );
             cuttingPaper(length / 2, x1 + length / 2, y1 + length / 2, x1 + length    , y1 + length    );
         } else if (count == 0) {
             white++;
