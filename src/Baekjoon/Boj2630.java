@@ -8,8 +8,8 @@ import java.util.StringTokenizer;
 
 public class Boj2630 {
 
-    static int blue = 0;
     static int white = 0;
+    static int blue = 0;
     static int[][] paper;
 
     public static void main(String[] args) throws IOException {
@@ -29,31 +29,30 @@ public class Boj2630 {
             }
         }
 
-        cuttingPaper(length, 0, 0, length, length);
+        cuttingPaper(length, 0, 0);
 
         System.out.println(white);
         System.out.println(blue);
     }
 
-    public static void cuttingPaper(int length, int x1, int y1, int x2, int y2) {
+    public static void cuttingPaper(int length, int row, int col) {
         int count = 0;
-        int zero = 0;
 
-        for (int y = y1; y < y2; y++) {
-            for (int x = x1; x < x2; x++) {
+        for (int y = row; y < row + length; y++) {
+            for (int x = col; x < col + length; x++) {
                 if (paper[y][x] == 1) count++;
             }
         }
 
         if (count != length * length && count != 0) {
-            cuttingPaper(length / 2, x1 + zero      , y1 + zero      , x1 + length / 2, y1 + length / 2);
-            cuttingPaper(length / 2, x1 + length / 2, y1 + zero      , x1 + length    , y1 + length / 2);
-            cuttingPaper(length / 2, x1 + zero      , y1 + length / 2, x1 + length / 2, y1 + length    );
-            cuttingPaper(length / 2, x1 + length / 2, y1 + length / 2, x1 + length    , y1 + length    );
-        } else if (count == 0) {
-            white++;
-        } else if (count == length * length){
-            blue++;
+            length = length / 2;
+            cuttingPaper(length, row, col);
+            cuttingPaper(length, row, col + length);
+            cuttingPaper(length, row + length, col);
+            cuttingPaper(length, row + length, col + length);
+        } else {
+            if (count == 0) white++;
+            else blue++;
         }
     }
 }
