@@ -18,6 +18,7 @@ public class Boj6198_ing {
         int count = Integer.parseInt(st.nextToken());
         Stack stack = new Stack();
 
+        st = new StringTokenizer(br.readLine());
         for (int i = 0; i < count; i++) {
             stack.push(Integer.parseInt(st.nextToken()));
 
